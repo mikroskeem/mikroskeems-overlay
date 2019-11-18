@@ -28,8 +28,8 @@ or add the following:
     # Other imports you might have here...
     # ...
     (fetchTarball {
-      url = "https://github.com/mikroskeem/mikroskeems-overlay/archive/<the commit hash>.tar.gz"
-      sha256 = "<output of 'nix-prefetch-url --unpack (url above)'>"
+      url = "https://github.com/mikroskeem/mikroskeems-overlay/archive/<the commit hash>.tar.gz";
+      sha256 = "<output of 'nix-prefetch-url --unpack (url above)'>";
     })
   ];
   # ...
