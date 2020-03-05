@@ -1,0 +1,11 @@
+--- a/scanlogd.orig.c	2020-03-05 20:12:05.847771274 +0200
++++ b/scanlogd.c	2020-03-05 20:12:23.198607164 +0200
+@@ -402,7 +402,7 @@
+ 	if (in_init()) return 1;
+ 
+ /* Prepare for daemonizing */
+-	chdir("/");
++	if (chdir("/")) pexit("chdir");
+ 	setsid();
+ 
+ /* Must do these before chroot'ing */

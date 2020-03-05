@@ -8,6 +8,7 @@
 with lib;
 let
   zfs-cfg = config.services.docker-zfs-plugin;
+  scanlogd-cfg = config.services.scanlogd;
   #depot-cfg = config.services.depot;
 in
 {
@@ -29,6 +30,14 @@ in
         type = types.listOf types.str;
         default = [];
         description = "What datasets should be exposed to the plugin";
+      };
+    };
+
+    services.scanlogd = {
+      enable = mkOption {
+        type = types.bool;
+	default = false;
+	description = "Whether to enable scanlogd service";
       };
     };
 
@@ -69,6 +78,33 @@ in
       wantedBy = [ "docker.service" ];
       requires = [ "zfs.target" ];
       path = [ pkgs.zfs ];
+    };
+
+    systemd.services.scanlogd = mkIf scanlogd-cfg.enable {
+      description = "A TCP port scan detection tool";
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        User = "root"; # Will drop permissions later
+        Restart = "on-abnormal";
+	ExecStart = "${pkgs.scanlogd}/bin/scanlogd";
+        RestartSec = "10s";
+        StartLimitInterval = "1min";
+	Type = "forking";
+      };
+    };
+
+    users.groups = optionalAttrs (scanlogd-cfg.enable) {
+      scanlogd.gid = config.users.users.scanlogd.uid;
+    };
+
+    users.users = optionalAttrs (scanlogd-cfg.enable) {
+      scanlogd = {
+        isSystemUser = true;
+	isNormalUser = false;
+        group = "scanlogd";
+      };
     };
 
 #    systemd.services.depot = mkIf depot-cfg.enable {
