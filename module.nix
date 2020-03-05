@@ -36,8 +36,8 @@ in
     services.scanlogd = {
       enable = mkOption {
         type = types.bool;
-	default = false;
-	description = "Whether to enable scanlogd service";
+        default = false;
+        description = "Whether to enable scanlogd service";
       };
     };
 
@@ -88,10 +88,10 @@ in
       serviceConfig = {
         User = "root"; # Will drop permissions later
         Restart = "on-abnormal";
-	ExecStart = "${pkgs.scanlogd}/bin/scanlogd";
+        ExecStart = "${pkgs.scanlogd}/bin/scanlogd";
         RestartSec = "10s";
         StartLimitInterval = "1min";
-	Type = "forking";
+        Type = "forking";
       };
     };
 
@@ -102,7 +102,7 @@ in
     users.users = optionalAttrs (scanlogd-cfg.enable) {
       scanlogd = {
         isSystemUser = true;
-	isNormalUser = false;
+        isNormalUser = false;
         group = "scanlogd";
       };
     };

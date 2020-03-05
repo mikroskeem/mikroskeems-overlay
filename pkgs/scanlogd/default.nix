@@ -16,7 +16,7 @@ in stdenv.mkDerivation {
 
   NIX_CFLAGS_COMPILE = "-Wno-cpp";
   outputs = [ "out" "chroot" ];
-  
+
   patches = [
     ./fix-chdir-warning.patch
   ];
