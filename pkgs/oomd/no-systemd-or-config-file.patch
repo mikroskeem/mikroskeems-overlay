@@ -1,0 +1,31 @@
+--- oomd-0.3.2/meson.orig.build	2020-03-22 20:21:37.342648458 +0200
++++ oomd-0.3.2/meson.build	2020-03-22 20:22:14.991331199 +0200
+@@ -106,17 +106,17 @@
+ substs.set('oomdconfdir', oomdconfdir)
+ substs.set('systemunitdir', systemunitdir)
+ 
+-configure_file(
+-    input : 'src/oomd/etc/oomd.service.in',
+-    output : 'oomd.service',
+-    configuration : substs,
+-    install_dir : systemunitdir)
+-
+-configure_file(
+-    input : 'src/oomd/etc/desktop.json',
+-    output : 'oomd.json',
+-    configuration : substs,
+-    install_dir : oomdconfdir)
++#configure_file(
++#    input : 'src/oomd/etc/oomd.service.in',
++#    output : 'oomd.service',
++#    configuration : substs,
++#    install_dir : systemunitdir)
++#
++#configure_file(
++#    input : 'src/oomd/etc/desktop.json',
++#    output : 'oomd.json',
++#    configuration : substs,
++#    install_dir : oomdconfdir)
+ 
+ install_man('man/oomd.1')
+ 
