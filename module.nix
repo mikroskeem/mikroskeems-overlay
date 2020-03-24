@@ -71,7 +71,7 @@ in
 
         ExecStart = "${pkgs.docker-zfs-plugin}/bin/docker-zfs-plugin "
           + "${if (zfs-cfg.debug) then "--debug" else ""} "
-          + "${concatMapStrings (x: "--dataset-name " + x) zfs-cfg.datasets}";
+          + "${concatMapStrings (x: " --dataset-name " + x) zfs-cfg.datasets}";
       };
 
       before = [ "docker.service" ];
