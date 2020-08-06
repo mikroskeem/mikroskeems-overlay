@@ -80,6 +80,10 @@ in
       path = [ pkgs.zfs ];
     };
 
+    systemd.services.docker = lib.optionalAttrs zfs-cfg.enable {
+      after = [ "docker-zfs-plugin.service" ];
+    };
+
     systemd.services.scanlogd = mkIf scanlogd-cfg.enable {
       description = "A TCP port scan detection tool";
       after = [ "network.target" ];
