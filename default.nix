@@ -1,7 +1,7 @@
 {
   imports = (
-    if builtins.pathExists(./module.nix) then [ ./module.nix ]
-    else []
+    if builtins.pathExists (./module.nix) then [ ./module.nix ]
+    else [ ]
   );
 
   nixpkgs.overlays = [

@@ -5,6 +5,6 @@ self: super:
 #in
 with super;
 {
-  depot = callPackage ./pkgs/depot {};
-  scanlogd = callPackage ./pkgs/scanlogd {};
+  depot = callPackage ./pkgs/depot { };
+  scanlogd = callPackage ./pkgs/scanlogd { };
 }

@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 
 with lib;
@@ -20,19 +19,19 @@ in
       };
     };
 
-#    services.depot = {
-#      enable = mkOption {
-#        type = types.bool;
-#        default = false;
-#        description = "Whether to enable depot service";
-#      };
-#
-#      debug = mkOption {
-#        type = types.bool;
-#        default = false;
-#        description = "Whether to enable debug mode";
-#      };
-#    };
+    #    services.depot = {
+    #      enable = mkOption {
+    #        type = types.bool;
+    #        default = false;
+    #        description = "Whether to enable depot service";
+    #      };
+    #
+    #      debug = mkOption {
+    #        type = types.bool;
+    #        default = false;
+    #        description = "Whether to enable debug mode";
+    #      };
+    #    };
   };
 
   config = {
@@ -63,16 +62,16 @@ in
       };
     };
 
-#    systemd.services.depot = mkIf depot-cfg.enable {
-#      descrption = "Depot is a lightweight Maven repository software";
-#      wantedBy = [ "multi-user.target" ];
-#
-#      serviceConfig = {
-#        Restart = "on-abnormal";
-#
-#        # TODO: generate config file
-#        ExecStart = "${pkgs.depot}/bin/depot";
-#      };
-#    };
+    #    systemd.services.depot = mkIf depot-cfg.enable {
+    #      descrption = "Depot is a lightweight Maven repository software";
+    #      wantedBy = [ "multi-user.target" ];
+    #
+    #      serviceConfig = {
+    #        Restart = "on-abnormal";
+    #
+    #        # TODO: generate config file
+    #        ExecStart = "${pkgs.depot}/bin/depot";
+    #      };
+    #    };
   };
 }

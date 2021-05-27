@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}
+{ pkgs ? import <nixpkgs> { }
 , stdenv ? pkgs.stdenv
 , lib ? stdenv.lib
 }:
@@ -15,7 +15,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = with pkgs; [ meson pkg-config cmake ninja jsoncpp systemd ] ++ [ gtest gmock ];
   patches = [ ./no-systemd-or-config-file.patch ];
-  mesonFlags = ["-Dsysconfdir=/etc"];
+  mesonFlags = [ "-Dsysconfdir=/etc" ];
 }
 
 # vim:sts=2:sw=2:et

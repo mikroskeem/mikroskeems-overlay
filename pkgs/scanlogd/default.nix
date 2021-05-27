@@ -1,4 +1,4 @@
-{ pkgs ? (import <nixpkgs> {}).pkgs
+{ pkgs ? (import <nixpkgs> { }).pkgs
 , stdenv ? pkgs.stdenv
 , fetchurl ? pkgs.fetchurl
 }:
@@ -6,7 +6,8 @@
 let
   pname = "scanlogd";
   version = "2.2.7";
-in stdenv.mkDerivation {
+in
+stdenv.mkDerivation {
   name = "${pname}-${version}";
 
   src = fetchurl {
