@@ -6,6 +6,5 @@ self: super:
 with super;
 {
   depot = callPackage ./pkgs/depot {};
-  docker-zfs-plugin = callPackage ./pkgs/docker-zfs-plugin {};
   scanlogd = callPackage ./pkgs/scanlogd {};
 }
